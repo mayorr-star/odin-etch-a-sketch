@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.square-div{
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+}
+
+.square-div:hover{
+    background-color: rgba(255, 0, 0, 0.3);
+}
+
+.grid-container{
+    display: flex;
+    flex-wrap: wrap;
+    width: 480px;
+    margin: 50px auto;
+}
+
+.square-div.hover-me{
+    background-color: green;
+}
