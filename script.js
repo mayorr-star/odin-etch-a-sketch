@@ -1,9 +1,15 @@
-const gridContainer = document.querySelector(".grid-container");
+const grid = document.querySelector(".grid-container");
 
-for (let i = 0; i < 16; i++) {
-    for (let j = 0; j < 16; j++) {
-        const squareDivs = document.createElement("div");
-        squareDivs.setAttribute("class", "square-div");
-        gridContainer.appendChild(squareDivs);
+function createGrid() {
+    for (let i = 0; i < 16 * 16; i++) {
+            const squareDiv = document.createElement("div");
+            squareDiv.setAttribute("class", "square-div");
+            grid.appendChild(squareDiv);
+            squareDiv.addEventListener("click", (e) => displayColour(e))
     }
+}
+createGrid()
+
+function displayColour(e) {
+    e.currentTarget.classList.add("hover-me")
 }
