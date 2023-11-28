@@ -1,11 +1,11 @@
-const grid = document.querySelector(".grid-container");
+const grid = document.querySelector(".grid");
 
 function createGrid() {
     for (let i = 0; i < 16 * 16; i++) {
             const squareDiv = document.createElement("div");
             squareDiv.setAttribute("class", "square-div");
             grid.appendChild(squareDiv);
-            squareDiv.addEventListener("click", (e) => displayColour(e))
+            squareDiv.addEventListener("mouseover", (e) => displayColour(e))
     }
 }
 createGrid()
