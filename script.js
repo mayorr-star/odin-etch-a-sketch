@@ -12,6 +12,13 @@ function createGrid(size) {
             cell.setAttribute("class", "cell");
             row.appendChild(cell);
             grid.appendChild(row)
+            cell.addEventListener("mouseover", (event) => {
+                changeColour(event)
+            })
         }
     }
+}
+
+function changeColour(e) {
+    e.currentTarget.classList.add("cell-hover")
 }
