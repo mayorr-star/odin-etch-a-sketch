@@ -1,33 +1,17 @@
 const grid = document.querySelector(".grid");
-const gridcontainer = document.querySelector(".grid-container");
+const buttonBox = document.querySelector(".button-box");
 
-window.addEventListener("DOMContentLoaded", createGrid(16));
+window.addEventListener("DOMContentLoaded", createGrid(16))
 
 function createGrid(size) {
-    for (let i = 0; i < size * size; i++) {
-            const squareDiv = document.createElement("div");
-            squareDiv.setAttribute("class", "square-div");
-            grid.appendChild(squareDiv);
-            squareDiv.addEventListener("mouseover", (e) => displayColour(e))
+    for (let rows = 0; rows < size; rows++) {
+        const row = document.createElement("div");
+        row.setAttribute("class", "row");
+        for (let columns = 0; columns < size; columns++) {
+            const cell = document.createElement("div");
+            cell.setAttribute("class", "cell");
+            row.appendChild(cell);
+            grid.appendChild(row)
+        }
     }
 }
-
-function displayColour(e) {
-    e.currentTarget.classList.add("hover-me");
-}
-
-function createButton() {
-    const button = document.createElement("button");
-    button.setAttribute("class", "size-button")
-    const buttonTextNode = document.createTextNode("Change size");
-    button.appendChild(buttonTextNode)
-    gridcontainer.insertBefore(button, grid)
-
-    button.addEventListener("click", () => {
-        const newSize = Number(prompt("Enter new size"));
-        grid.innerHTML = "";
-        createGrid(newSize)
-    })
-}
-createButton()
-
