@@ -67,6 +67,11 @@ buttons.forEach((button) => {
 
       case "dark-btn":
         darkenEffect = true;
+        break;
+
+      default:
+        randomMode= false;
+        darkenEffect = false
     }
   });
 });
