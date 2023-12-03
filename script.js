@@ -1,7 +1,10 @@
 const grid = document.querySelector(".grid");
 const buttonBox = document.querySelector(".button-box");
 const buttons = document.querySelectorAll(".extra");
+
+let opacity = 0;
 let randomMode = false;
+let darkenEffect = false;
 
 window.addEventListener("DOMContentLoaded", createGrid(16));
 
@@ -18,15 +21,24 @@ function createGrid(size) {
       cell.addEventListener("mouseover", (event) => {
         changeColour(event, "#000000");
         if (randomMode) {
-            changeColour(event, randomize())
+          changeColour(event, randomize());
+        }
+        if (darkenEffect) {
+          opacity += 0.1;
+          if (opacity > 1.0) {
+            opacity = 0.1;
+          }
+          changeColour(event, increaseCellOpacity());
+          console.log(opacity.toFixed(1))
         }
       });
     }
   }
 }
+
 function changeColour(e, colour) {
-    e.currentTarget.classList.add("cell-hover");
-    e.currentTarget.style.backgroundColor = colour;
+  e.currentTarget.classList.add("cell-hover");
+  e.currentTarget.style.backgroundColor = colour;
 }
 
 function changeGridSize(newSize) {
@@ -36,6 +48,7 @@ function changeGridSize(newSize) {
     createGrid(newSize);
   }
 }
+
 buttons.forEach((button) => {
   button.addEventListener("click", (e) => {
     const buttonId = button.getAttribute("id");
@@ -47,16 +60,28 @@ buttons.forEach((button) => {
 
       case "random-btn":
         randomMode = true;
+        if (darkenEffect === true) {
+          darkenEffect = false;
+        }
+        break;
+
+      case "dark-btn":
+        darkenEffect = true;
     }
   });
 });
 
 function randomize() {
-    const hexValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c", "d", "e", "f"];
-    let randomColour = "#";
-    for (let i = 0; i < 6; i++) {
-        const randomNumber = Math.floor(Math.random() * hexValues.length);
-        randomColour += hexValues[randomNumber];
-    }
-    return randomColour;
+  const hexValues = [1, 2, 3, 4, 5, 6, 7, 8, 9, "a", "b", "c", "d", "e", "f"];
+  let randomColour = "#";
+  for (let i = 0; i < 6; i++) {
+    const randomNumber = Math.floor(Math.random() * hexValues.length);
+    randomColour += hexValues[randomNumber];
+  }
+  return randomColour;
+}
+
+function increaseCellOpacity() {
+  const darkenedColour = `rgba(0, 0, 0, ${opacity.toFixed(1)})`;
+  return darkenedColour
 }
