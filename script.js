@@ -1,4 +1,5 @@
 const grid = document.querySelector(".grid");
+const gridContainer = document.querySelector(".grid-container");
 const buttonBox = document.querySelector(".button-box");
 const buttons = document.querySelectorAll(".extra");
 
@@ -18,6 +19,8 @@ function createGrid(size) {
       cell.setAttribute("class", "cell");
       row.appendChild(cell);
       grid.appendChild(row);
+      const cellHeight = 400 / parseInt(size);
+      cell.style.height = `${cellHeight}px`;
       cell.addEventListener("mouseover", (event) => {
         changeColour(event, "#000000");
         if (randomMode) {
@@ -29,7 +32,6 @@ function createGrid(size) {
             opacity = 0.1;
           }
           changeColour(event, increaseCellOpacity());
-          console.log(opacity.toFixed(1))
         }
       });
     }
