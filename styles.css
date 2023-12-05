@@ -16,14 +16,11 @@ main{
 
 .row{
     display: flex;
-    flex-wrap: wrap;
-    /* height: auto; */
 }
 
 .cell{
     border: 1px solid black;
     flex: 1;
-    height: 25px;
 }
 
 .grid{
