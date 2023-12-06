@@ -23,4 +23,4 @@ over a cell in the grid, its background colour changes depending on the mode the
   - Create new branches using git and merging them with main or master branch
 
 # Links
-  Live site URL: 
+  Live site URL: https://mayorr-star.github.io/odin-etch-a-sketch/
